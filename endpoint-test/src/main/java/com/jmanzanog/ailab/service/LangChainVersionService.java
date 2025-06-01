@@ -1,10 +1,8 @@
 package com.jmanzanog.ailab.service;
 
+import com.jmanzanog.ailab.model.VersionInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Service to provide information about LangChain4j versions.
@@ -20,13 +18,12 @@ public class LangChainVersionService {
      *
      * @return Map with version information
      */
-    public Map<String, String> getLangChainVersions() {
+    public VersionInfo getLangChainVersions() {
 
-        Map<String, String> versions = new HashMap<>();
-        versions.put("langchain4j-version", langchainVersion);
-        versions.put("langchain4j-spring-boot-starter", langchainVersion);
+        var versions = new VersionInfo();
+        versions.setLangchain4jVersion(langchainVersion);
+        versions.setLangchain4jSpringBootStarter(langchainVersion);
 
-        System.out.println("[DEBUG_LOG] Returning versions: " + versions);
         return versions;
     }
 }

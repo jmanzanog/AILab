@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: AILab API
+  description: API for AILab application that integrates with LangChain4j
+  version: 1.0.0
+  contact:
+    name: Jose Manzano
+    email: jmanzanog@icloud.com
+    url: https://github.com/jmanzanog
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+tags:
+  - name: LangChain Version
+    description: API to retrieve LangChain4j version information
+paths:
+  /api/langchain/versions:
+    get:
+      tags:
+        - LangChain Version
+      summary: Get LangChain4j versions
+      description: Returns information about the supported LangChain4j versions
+      operationId: getLangChainVersions
+      responses:
+        '200':
+          description: Successfully retrieved version information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionInfo'
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    VersionInfo:
+      type: object
+      description: Version information for LangChain4j components
+      properties:
+        langchain4jVersion:
+          type: string
+          description: The version of the LangChain4j library
+          example: 0.25.0
+        langchain4jSpringBootStarter:
+          type: string
+          description: The version of the LangChain4j Spring Boot starter
+          example: 0.25.0 

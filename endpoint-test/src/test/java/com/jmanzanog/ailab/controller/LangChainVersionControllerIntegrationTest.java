@@ -8,10 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasKey;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,10 +34,9 @@ public class LangChainVersionControllerIntegrationTest {
      */
     @Test
     public void testGetVersionsEndpoint() throws Exception {
-
         mockMvc.perform(get("/api/langchain/versions"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.langchain4j-version", equalTo(expectedLangchainVersion)))
-                .andExpect(jsonPath("$.langchain4j-spring-boot-starter", equalTo(expectedLangchainVersion)));
+                .andExpect(jsonPath("$.langchain4jVersion", equalTo(expectedLangchainVersion)))
+                .andExpect(jsonPath("$.langchain4jSpringBootStarter", equalTo(expectedLangchainVersion)));
     }
 }
