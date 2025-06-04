@@ -33,6 +33,32 @@ paths:
                 $ref: '#/components/schemas/VersionInfo'
         '500':
           description: Internal server error
+
+  /api/embedding/execute:
+    post:
+      tags:
+        - embedding
+      summary: Execute Creation embedding process
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                param1:
+                  type: string
+              required:
+                - param1
+      responses:
+        '200':
+          description:  Successfully asynchronous execution
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionOutput'
+
+
 components:
   schemas:
     VersionInfo:
@@ -46,4 +72,32 @@ components:
         langchain4jSpringBootStarter:
           type: string
           description: The version of the LangChain4j Spring Boot starter
-          example: 0.25.0 
+          example: 0.25.0
+    ExecutionOutput:
+      type: object
+      properties:
+        execution:
+          type: boolean
+
+    EmbeddingRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        prompt:
+          type: string
+    EmbeddingResponse:
+      type: object
+      properties:
+        embedding:
+          type: array
+          items:
+            type: number
+            format: double
+        model:
+          type: string
+        prompt:
+          type: string
+
+
+

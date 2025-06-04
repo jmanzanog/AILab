@@ -35,6 +35,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
+        </dependency>
         
         <!-- MongoDB integration tests -->
 
@@ -63,7 +69,6 @@
                             <generatorName>spring</generatorName>
                             <apiPackage>com.jmanzanog.ailab.api</apiPackage>
                             <modelPackage>com.jmanzanog.ailab.model</modelPackage>
-                            <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                             <configOptions>
                                 <delegatePattern>true</delegatePattern>
                                 <interfaceOnly>true</interfaceOnly>
