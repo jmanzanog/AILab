@@ -29,8 +29,7 @@ public class LangChainVersionController implements LangChainVersionApi {
      * @return JSON response with version information
      */
     @Override
-    @GetMapping("/versions")
-    public ResponseEntity<VersionInfo> getLangChainVersions() {
+    public ResponseEntity<VersionInfo> _getLangChainVersions() {
         var response = versionService.getLangChainVersions();
         return ResponseEntity.ok(response);
     }

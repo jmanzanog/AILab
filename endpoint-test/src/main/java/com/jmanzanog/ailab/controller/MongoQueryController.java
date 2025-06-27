@@ -29,7 +29,7 @@ public class MongoQueryController {
      * @return lista de documentos como JSON
      */
     @GetMapping("/find")
-    public ResponseEntity<List<Map<String, Object>>> findDocuments(
+    public ResponseEntity<List<Map<String, Object>>> _findDocuments(
             @RequestParam(defaultValue = "sample_mflix") String db,
             @RequestParam(defaultValue = "movies") String collection,
             @RequestParam(defaultValue = "20") int limit) {

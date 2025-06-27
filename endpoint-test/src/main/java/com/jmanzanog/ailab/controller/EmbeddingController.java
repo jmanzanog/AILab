@@ -33,7 +33,7 @@ public class EmbeddingController implements EmbeddingApi {
      */
     @Override
     @PostMapping("/execute")
-    public ResponseEntity<ExecutionOutput> apiEmbeddingExecutePost(
+    public ResponseEntity<ExecutionOutput> _apiEmbeddingExecutePost(
             @Parameter(name = "ApiEmbeddingExecutePostRequest", required = true)
             @Valid @RequestBody ApiEmbeddingExecutePostRequest apiEmbeddingExecutePostRequest
     ) {
