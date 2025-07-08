@@ -1,6 +1,7 @@
 # AILab - Spring Boot with LangChain4j
 
-This project demonstrates the integration of [LangChain4j](https://github.com/langchain4j/langchain4j-spring) with Spring Boot.
+This project demonstrates the integration of [LangChain4j](https://github.com/langchain4j/langchain4j-spring) with
+Spring Boot.
 
 ## Features
 
@@ -19,6 +20,7 @@ GET /api/langchain/versions
 Returns a JSON object with information about the supported LangChain versions.
 
 Example response:
+
 ```json
 {
   "langchain4j-version": "0.25.0",

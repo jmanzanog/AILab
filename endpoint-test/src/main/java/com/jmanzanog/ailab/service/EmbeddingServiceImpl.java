@@ -63,10 +63,10 @@ public class EmbeddingServiceImpl extends AbstractWebClientService implements Em
     /**
      * Pagina documentos de una colección y crea embeddings por cada página.
      *
-     * @param db      base de datos
+     * @param db         base de datos
      * @param collection colección
-     * @param limit   máximo de documentos a procesar (opcional, si 0 procesa todos)
-     * @param skip    documentos a saltar al inicio (opcional, si 0 empieza desde el principio)
+     * @param limit      máximo de documentos a procesar (opcional, si 0 procesa todos)
+     * @param skip       documentos a saltar al inicio (opcional, si 0 empieza desde el principio)
      * @return Flux de EmbeddingResponse por cada página procesada
      */
     public Flux<EmbeddingResponse> createEmbeddingsForAllPages(String db, String collection, int limit, int skip) {
@@ -83,12 +83,12 @@ public class EmbeddingServiceImpl extends AbstractWebClientService implements Em
                     if (pageLimit <= 0) return Flux.empty();
                     List<Map<String, Object>> docs = mongoQueryService.findDocuments(db, collection, pageSkip, pageLimit);
                     return Flux.fromIterable(docs)
-                        .flatMap(doc -> {
-                            Object promptValue = extractValueByPath(doc, promptPath);
-                            if (promptValue == null) return Flux.empty();
-                            var req = new EmbeddingRequest().model(embeddingModel).prompt(promptValue.toString());
-                            return createEmbedding(req);
-                        }, concurrencyLevel);
+                            .flatMap(doc -> {
+                                Object promptValue = extractValueByPath(doc, promptPath);
+                                if (promptValue == null) return Flux.empty();
+                                var req = new EmbeddingRequest().model(embeddingModel).prompt(promptValue.toString());
+                                return createEmbedding(req);
+                            }, concurrencyLevel);
                 }, concurrencyLevel);
     }
 

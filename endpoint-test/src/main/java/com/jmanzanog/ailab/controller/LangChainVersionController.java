@@ -5,15 +5,12 @@ import com.jmanzanog.ailab.model.VersionInfo;
 import com.jmanzanog.ailab.service.LangChainVersionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * REST controller that exposes endpoints to retrieve LangChain4j version information.
  */
 @RestController
-@RequestMapping("/api/langchain")
 public class LangChainVersionController implements LangChainVersionApi {
 
     private final LangChainVersionService versionService;

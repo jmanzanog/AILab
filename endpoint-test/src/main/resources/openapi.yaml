@@ -52,7 +52,7 @@ paths:
                 - param1
       responses:
         '200':
-          description:  Successfully asynchronous execution
+          description: Successfully asynchronous execution
           content:
             application/json:
               schema:

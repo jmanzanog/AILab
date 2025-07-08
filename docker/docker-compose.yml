@@ -21,7 +21,7 @@ x-ollama: &service-ollama
 
 x-init-ollama: &init-ollama
   image: ollama/ollama:latest
-  networks: ['demo']
+  networks: [ 'demo' ]
   volumes:
     - ollama_storage:/root/.ollama
   entrypoint: /bin/sh
@@ -40,7 +40,7 @@ services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
-    networks: ['demo']
+    networks: [ 'demo' ]
     restart: unless-stopped
     ports:
       - "3000:8080"
@@ -52,7 +52,7 @@ services:
   postgres:
     image: postgres:16-alpine
     container_name: postgres
-    networks: ['demo']
+    networks: [ 'demo' ]
     restart: unless-stopped
     ports:
       - 5432:5432
@@ -63,7 +63,7 @@ services:
     volumes:
       - postgres_storage:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -h localhost -U root -d postgres']
+      test: [ 'CMD-SHELL', 'pg_isready -h localhost -U root -d postgres' ]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -71,7 +71,7 @@ services:
   qdrant:
     image: qdrant/qdrant
     container_name: qdrant
-    networks: ['demo']
+    networks: [ 'demo' ]
     restart: unless-stopped
     ports:
       - 6333:6333
@@ -79,12 +79,12 @@ services:
       - qdrant_storage:/qdrant/storage
 
   ollama-cpu:
-    profiles: ["cpu"]
+    profiles: [ "cpu" ]
     <<: *service-ollama
     container_name: ollama-cpu
 
   ollama-gpu:
-    profiles: ["gpu-nvidia"]
+    profiles: [ "gpu-nvidia" ]
     <<: *service-ollama
     container_name: ollama-gpu
     runtime: nvidia
@@ -92,14 +92,14 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
 
   ollama-pull-llama-cpu:
-    profiles: ["cpu"]
+    profiles: [ "cpu" ]
     <<: *init-ollama
     container_name: ollama-pull-llama-cpu
     depends_on:
       - ollama-cpu
 
   ollama-pull-llama-gpu:
-    profiles: ["gpu-nvidia"]
+    profiles: [ "gpu-nvidia" ]
     <<: *init-ollama
     container_name: ollama-pull-llama-gpu
     depends_on:

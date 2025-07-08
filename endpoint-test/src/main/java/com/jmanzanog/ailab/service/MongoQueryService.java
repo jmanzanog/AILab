@@ -37,7 +37,7 @@ public class MongoQueryService {
      * @param collection the collection name
      * @param limit      the maximum number of documents to return
      * @return a list of documents as key-value maps
-     *
+     * <p>
      * Example usage:
      * <pre>
      *     findDocuments("myDB", "myCollection", 100);
@@ -55,7 +55,7 @@ public class MongoQueryService {
      * @param skip       the number of documents to skip (for pagination)
      * @param limit      the maximum number of documents to return
      * @return a list of documents as key-value maps
-     *
+     * <p>
      * Example usage:
      * <pre>
      *     // Get the first page (documents 0 to 99)
@@ -83,7 +83,7 @@ public class MongoQueryService {
      * @param db         the database name
      * @param collection the collection name
      * @return the total number of documents in the collection
-     *
+     * <p>
      * Example usage:
      * <pre>
      *     long total = countDocuments("myDB", "myCollection");

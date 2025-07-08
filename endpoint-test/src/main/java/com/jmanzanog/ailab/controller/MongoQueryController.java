@@ -1,12 +1,13 @@
 package com.jmanzanog.ailab.controller;
 
+import com.jmanzanog.ailab.service.MongoQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.jmanzanog.ailab.service.MongoQueryService;
+
 import java.util.List;
 import java.util.Map;
 
@@ -23,9 +24,10 @@ public class MongoQueryController {
 
     /**
      * Endpoint para consultar documentos de cualquier base y colección MongoDB.
-     * @param dbName nombre de la base de datos
+     *
+     * @param dbName     nombre de la base de datos
      * @param collection nombre de la colección
-     * @param limit límite de resultados
+     * @param limit      límite de resultados
      * @return lista de documentos como JSON
      */
     @GetMapping("/find")
